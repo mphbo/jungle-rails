@@ -41,10 +41,11 @@ class OrdersController < ApplicationController
       total_cents: cart_subtotal_cents,
       stripe_charge_id: stripe_charge.id, # returned by stripe
     )
-
+    order.total = 0
     enhanced_cart.each do |entry|
       product = entry[:product]
       quantity = entry[:quantity]
+      order.total += product.price * product.quantity
       order.line_items.new(
         product: product,
         quantity: quantity,
