@@ -1,17 +1,9 @@
 <h1>Login</h1>
 
+<%= form_tag '/login' do %>
 
-
-
-<%= form_for :user, url: '/users' do |f| %>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-  <%= f.text_field :email, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Password</label>
-  <%= f.password_field :password, class: 'form-control' %>
-  </div>
-  <%= f.submit "Submit", class: "btn btn-success" %>
+  Email: <%= text_field_tag :email %>
+  Password: <%= password_field_tag :password %>
+  <%= submit_tag "Submit" %>
 
 <% end %>
